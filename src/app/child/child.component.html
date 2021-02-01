@@ -1,0 +1,52 @@
+<h3>Add customer</h3>
+<form class="example-form shadow p-3 mb-5 bg-white rounded" #form1="ngForm">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" placeholder="Name" [(ngModel)]="customers.name" name="name" required minlength="6" maxlength="20" #name="ngModel">
+      <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          <div *ngIf="name.hasError('required')">Name is Required</div>
+          <div *ngIf="name.hasError('minlength')">Minium 6 Chracters are Required</div>
+          <div *ngIf="name.hasError('maxlength')">Maxium 20 Chracters are Required</div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Age</mat-label>
+        <input matInput type="number"  [(ngModel)]="customers.age" name="age" required min="0" max="100" #age="ngModel" pattern="^[1-9]?[0-9]{1}$|^100$">
+        <mat-error *ngIf="age.invalid && (age.dirty || age.touched)">
+            <div *ngIf="age.hasError('required')">Age is Required</div>
+            <div *ngIf="age.hasError('pattern')">invalid age</div>
+        </mat-error>
+      </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <input matInput type="text" placeholder="Address" [(ngModel)]="customers.address" name="address" #address="ngModel" required minlength="10" maxlength="50">
+        <mat-error *ngIf="address.invalid && (address.dirty || address.touched)">
+            <div *ngIf="address.hasError('required')">Address is Required</div>
+            <div *ngIf="address.hasError('minlength')">Minium 10 Chracters are Required</div>
+            <div *ngIf="address.hasError('maxlength')">Maxium 50 Chracters are Required</div>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput placeholder="Ex. pat@example.com" [(ngModel)]="customers.email" name="email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+        <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.hasError('required')">Email is Required</div>
+            <div *ngIf="address.errors?.pattern">Email must be a valid email Address</div>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Career</mat-label>
+        <input matInput type="text" placeholder="Career" [(ngModel)]="customers.career" name="career">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Hobby</mat-label>
+        <input matInput type="text" placeholder="Hobby..." [(ngModel)]="customers.hobby" name="hobby">
+    </mat-form-field>
+    <section>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary" type="submit" (click)="addCustomer(); form1.resetForm({})" [disabled]="form1.invalid">Submit</button>
+        </div>
+    </section>
+    
+    
+  </form>
