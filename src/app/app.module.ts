@@ -9,6 +9,7 @@ import { ParentComponent } from './parent/parent.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChildComponent } from './child/child.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatTableModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

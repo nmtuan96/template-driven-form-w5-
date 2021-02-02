@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, SimpleChanges } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -8,11 +8,13 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ParentComponent implements OnInit {
   list: any =[];
+  listTest: any = [];
   dataSource = new MatTableDataSource<any[]>();
   receiveData($event){
-    this.list = $event
+    this.list = $event;
     this.dataSource.data = this.list;
   }
+  
   
   displayedColumns: string[] = ['id', 'name', 'age', 'address', 'email', 'career', 'hobby', 'action'];
 
@@ -22,7 +24,6 @@ export class ParentComponent implements OnInit {
   }
 
   deleteCustomer(i){
-    debugger
     this.list.splice(i,1);
     this.dataSource.data = this.list;
   }
@@ -30,6 +31,8 @@ export class ParentComponent implements OnInit {
   parentData:any;
   editCustomer(i){
     var data = this.list.find(e => e.id == i);
-    this.parentData = data
+    this.parentData = data;
   }
+  
+  
 }
